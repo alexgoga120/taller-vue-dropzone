@@ -23,7 +23,7 @@
                                   :duplicateCheck="true"
                                   :useCustomSlot="true"
                                   :options="dropzoneOptions"
-                                  :maxFileSizeInMB="0.1"
+
                                   @vdropzone-file-added="(file) =>{dzGenericFunction(file,'Archivo añadido')}"
                                   @vdropzone-files-added="(file) =>{dzGenericFunction(file,'Archivos añadidos', true)}"
 
@@ -36,6 +36,9 @@
                                 <v-btn color="orange">
                                     Subir imagenes
                                 </v-btn>
+                                <v-icon>
+                                    mdi-magnify
+                                </v-icon>
                             </div>
                         </template>
                     </vue-dropzone>
@@ -81,6 +84,7 @@ export default {
         this.dropzoneOptions = {
             url: '/',
             thumbnailMethod: 'contain',
+            maxFiles: 2,
             addRemoveLinks: true,
             uploadMultiple: true,
             autoProcessQueue: false,

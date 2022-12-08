@@ -25,5 +25,9 @@ class HomeController extends Controller
             $userImage->img_url = UploadFiles::storeFile($file, 'user_img');
             $userImage->saveOrFail();
         }
+
+        return response()->json([
+            'users' => User::with(['users_images'])->get()
+        ]);
     }
 }

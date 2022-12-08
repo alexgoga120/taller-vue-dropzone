@@ -8,9 +8,10 @@ const store = new Vuex.Store({
         users: [],
     },
     actions: {
-        async addUserImageAction({commit, dispatch}, params) {
-            await commit('addUserImage', params);
-            dispatch('getUsersAction')
+        addUserImageAction({commit, dispatch}, params) {
+            axios.post(route('home.uploadFiles'), params).then(() => {
+                dispatch('getUsersAction');
+            }).catch();
         },
         getUsersAction({commit}) {
             axios.get(route('home.getUsers')).then(({data}) => {
@@ -19,11 +20,6 @@ const store = new Vuex.Store({
         }
     },
     mutations: {
-        addUserImage(state, payload) {
-            axios.post(route('home.uploadFiles'), payload).then(() => {
-                console.log("add image to user")
-            }).catch();
-        },
         getUsers(state, payload) {
             state.users = payload;
         }

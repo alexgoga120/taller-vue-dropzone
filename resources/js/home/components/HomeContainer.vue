@@ -1,7 +1,7 @@
 <template>
     <v-main>
         <v-container class="fill-height" fluid>
-            <div class="d-flex justify-space-around align-center w-100" v-if="userVuex.length !== 0">
+            <div class="d-flex justify-space-around align-center w-100">
                 <UserCard v-for="(user, index) in userVuex"
                           :key="index"
                           :user="user"/>
@@ -13,6 +13,7 @@
 <script>
 
 import UserCard from "./UserCard";
+
 export default {
     name: "HomeContainer",
     components: {UserCard},
